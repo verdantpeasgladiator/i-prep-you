@@ -13,33 +13,19 @@ export default class Input extends Component {
   };
 
   render() {
-    // const { value } = this.state;
+    let { value } = this.state;
 
     return (
       <form>
         <label htmlFor={"resume"}>Enter Your Resume Here:</label>
         <input
           type="text"
-          name="resume"
-          id="resume"
+          name={value}
+          id={value}
           placeholder={"Paste your resume"}
         />
         <input type="submit" value="Submit" />
       </form>
-
-      //   <div>
-      //     <label htmlFor={"id"}>Enter Your Resume Here:</label>
-      //     <input
-      //       id={"id"}
-      //       type={"text"}
-      //       value={value}
-      //       placeholder={"Paste your resume"}
-      //       onChange={this.handleChange}
-      //     />
-      //     <br />
-      //     <br />
-      //     {/* My value: {value} */}
-      //   </div>
     );
   }
 }
