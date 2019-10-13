@@ -1,22 +1,28 @@
+
+
 .App {
-  text-align: center;
+  text-align: left;
+  background-color: #1E253E;
 }
 
 .App-logo {
   height: 40vmin;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
 .App-link {
   color: #09d3ac;
+}
+
+.Left {
+  float: left;
+}
+
+.Right {
+  float: right;
+}
+
+.Content {
+  display: grid;
+  grid-template-columns: 60% 40%;
+  margin: 40px 60px;
 }

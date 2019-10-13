@@ -1,5 +1,6 @@
 import React from "react";
 import Webcam from "react-webcam";
+import './Webcam.css';
 import firebase from 'firebase';
 import { connect } from 'react-redux';
 import { setEmotion } from '../Actions/index.js';

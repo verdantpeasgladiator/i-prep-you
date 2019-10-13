@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { getSelected } from "../Actions/index.js";
+import './ScoreCard.css'
 
 class ScoreCard extends React.Component {
   constructor() {
@@ -17,17 +18,20 @@ class ScoreCard extends React.Component {
     return (
       <div className="scoreCard">
         <h1>Question {selectedQ.questionNo}</h1>
+        <div className="container">
         {criteria.map(
           criterion => {
             totalScore += criterion.score;
             return (
-              <div>
-                <p key={criterion.id}> {criterion.text}: {criterion.score}/10</p>
+              <div className="criterion">
+                <p key={criterion.id}> {criterion.text}: </p>
+                <p className="score">{criterion.score}/10</p>
               </div>
             )
           }
         )}
-        <p> Total: {totalScore}/{10*criteria.length} </p>
+        </div>
+        <h1 className="totalScore"> Total: {totalScore}/{10*criteria.length} </h1>
       </div>
     );
   }
