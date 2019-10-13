@@ -9,29 +9,24 @@ const initialState = {
       criteria: [
         {
           id: 0,
-          text: "Some kind of criteria 0",
+          text: "Effective Use of Language and Speech Patterns",
           score: 10
         },
         {
           id: 1,
-          text: "Some kind of criteria 1",
+          text: "Conversational Tone",
           score: 9
         },
         {
           id: 2,
-          text: "Some kind of criteria 2",
+          text: "Body Language, Posture, and Gestures",
           score: 8
         },
         {
           id: 3,
-          text: "Some kind of criteria 3",
+          text: "Agreeableness",
           score: 9
         },
-        {
-          id: 4,
-          text: "Some kind of criteria 4",
-          score: 7
-        }
       ]
     },
     {
@@ -41,29 +36,24 @@ const initialState = {
       criteria: [
         {
           id: 0,
-          text: "Some kind of criteria 0",
+          text: "Effective Use of Language and Speech Patterns",
           score: 10
         },
         {
           id: 1,
-          text: "Some kind of criteria 1",
-          score: 9
+          text: "Conversational Tone",
+          score: 10
         },
         {
           id: 2,
-          text: "Some kind of criteria 2",
-          score: 8
+          text: "Body Language, Posture, and Gestures",
+          score: 10
         },
         {
           id: 3,
-          text: "Some kind of criteria 3",
-          score: 9
+          text: "Agreeableness",
+          score: 10
         },
-        {
-          id: 4,
-          text: "Some kind of criteria 4",
-          score: 7
-        }
       ]
     },
     {
@@ -73,36 +63,31 @@ const initialState = {
       criteria: [
         {
           id: 0,
-          text: "Some kind of criteria 0",
-          score: 10
+          text: "Effective Use of Language and Speech Patterns",
+          score: 5
         },
         {
           id: 1,
-          text: "Some kind of criteria 1",
-          score: 9
+          text: "Conversational Tone",
+          score: 5
         },
         {
           id: 2,
-          text: "Some kind of criteria 2",
-          score: 8
+          text: "Body Language, Posture, and Gestures",
+          score: 5
         },
         {
           id: 3,
-          text: "Some kind of criteria 3",
+          text: "Agreeableness",
           score: 9
         },
-        {
-          id: 4,
-          text: "Some kind of criteria 4",
-          score: 7
-        }
       ]
     }
   ],
   selected: null,
-  webcam: {
-    emotion: ''
-  }
+  emotion: '',
+  emotionCounter: 0,
+  smile: 0
 }
 
 function questionsReducer(state = initialState, action) {
@@ -124,6 +109,33 @@ function webcamReducer(state = initialState, action) {
         ...state,
         emotion: action.emotion
       }
+    case "COUNTER_EMOTION":
+      return {
+        ...state,
+        emotionCounter: state.emotionCounter + 1
+      }
+    case "COUNT_SMILE":
+      return {
+        ...state,
+        smile: state.smile + action.value
+      }
+    default:
+      return state;
+  }
+}
+
+function pageReducer(state = initialState, action) {
+  switch (action.type) {
+    case "SET_PAGE":
+      return {
+        ...state,
+        isHome: action.isHome
+      }
+    case "SET_JOB_DESC":
+      return {
+        ...state,
+        jobDesc: action.string
+      }
     default:
       return state;
   }
@@ -131,5 +143,6 @@ function webcamReducer(state = initialState, action) {
 
 export default combineReducers({
   questionsState: questionsReducer,
-  webcamReducer: webcamReducer
+  webcamReducer: webcamReducer,
+  pageState: pageReducer,
 });

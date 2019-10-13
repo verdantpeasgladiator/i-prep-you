@@ -3,17 +3,31 @@ import { connect } from 'react-redux';
 
 class Feedback extends React.Component {
   render() {
+    if (this.props.emotion)
     return (
-      <p>{this.props.emotion}</p>
+      // <p>{JSON.stringify(this.props.emotion)}</p>
+      <div>
+      {
+        Object.entries(this.props.emotion).map(([k, v]) => (
+          <p key={k}>{k + v}</p>
+        ))
+      }
+        <p>{ this.props.jobDesc }</p>
+      </div>
     )
+    else {
+      return(
+        <p>{ this.props.jobDesc }</p>
+      )
+    }
   }
 
 }
 
 const mapStateToProps = (state) => {
-  console.log("webcam reducer emotion is:", state.webcamReducer);
   return {
-    emotion: state.webcamReducer.emotion
+    emotion: state.webcamReducer.emotion,
+    jobDesc: state.pageState.jobDesc
   };
 };
 

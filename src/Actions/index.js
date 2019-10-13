@@ -11,3 +11,30 @@ export function setEmotion(emotion) {
     emotion
   }
 }
+
+export function addEmotionCount() {
+  return {
+    type: 'COUNTER_EMOTION'
+  }
+}
+
+export function addSmile(value) {
+  return {
+    type: 'COUNT_SMILE',
+    value
+  }
+}
+
+export function setPage(isHome) {
+  return {
+    type: 'SET_PAGE',
+    isHome
+  }
+}
+
+export function setJobDesc(string) {
+  return {
+    type: 'SET_JOB_DESC',
+    string
+  }
+}
