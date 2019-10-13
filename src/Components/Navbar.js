@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Logo from '../logo.svg'
+import './Navbar.css'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -17,7 +18,7 @@ export default function Navbar() {
   return (
     <div className={classes.root}>
       <AppBar position="static" style={{backgroundColor: '#6E58C5', padding: 20}}>
-        <img src={Logo} />
+        <div className="logo"><img src={Logo} /></div>
       </AppBar>
     </div>
   );
