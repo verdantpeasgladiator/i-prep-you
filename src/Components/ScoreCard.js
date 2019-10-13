@@ -4,11 +4,19 @@ import { getSelected } from "../Actions/index.js";
 import './ScoreCard.css'
 
 class ScoreCard extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       questionNo: 1
     };
+  }
+
+  onclick = (length) => {
+    if (length - this.state.questionNo > 0) {
+      this.setState({questionNo: this.state.questionNo + 1}, function () {
+        console.log(this.state.questionNo);
+      })
+    }
   }
 
   render() {
@@ -25,22 +33,23 @@ class ScoreCard extends React.Component {
             return (
               <div className="criterion">
                 <p key={criterion.id}> {criterion.text}: </p>
-                <p className="score">{criterion.score}/10</p>
+                <p className="score">{(criterion.score).toFixed(2)}/10</p>
               </div>
             )
           }
         )}
         </div>
-        <h1 className="totalScore"> Total: {totalScore}/{10*criteria.length} </h1>
+        <h1 className="totalScore"> Total: {totalScore.toFixed(2)}/{10*criteria.length} </h1>
+        <button onClick={this.onclick.bind(this, this.props.questions.length)}>{this.state.questionNo <= this.props.questions.length ? (<div>Continue</div>) : (<div>Finish</div>) }</button>
       </div>
-    );
+    );  
   }
 }
 
 const mapStateToProps = state => {
   return {
     questions: state.questionsState.questions
-  };
+   };
 };
 
 export default connect(

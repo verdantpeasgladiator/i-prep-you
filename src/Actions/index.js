@@ -5,6 +5,12 @@ export function getSelected(questionNo) {
   };
 }
 
+export function getNextQuestion() {
+  return {
+    type: "GET_NEXT_Q",
+  }
+}
+
 export function setEmotion(emotion) {
   return {
     type: 'SET_EMOTION',
@@ -39,9 +45,9 @@ export function setJobDesc(string) {
   }
 }
 
-export function calculateScore(string) {
+export function calculateScore(scoreObj) {
   return {
     type: 'CALCULATE',
-    string
+    scoreObj
   }
 }
