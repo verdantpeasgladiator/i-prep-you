@@ -1,5 +1,5 @@
 import React from "react";
-import MyWebcam from './webcam';
+import MyWebcam from './Webcam';
 const SpeechSDK = require("microsoft-cognitiveservices-speech-sdk");
 const subscriptionKey = "cfd23720fb3c4a5d9c28649d946259a1";
 const serviceRegion = "westus"; // e.g., "westus"

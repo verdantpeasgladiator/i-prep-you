@@ -11,3 +11,16 @@ export function setEmotion(emotion) {
     emotion
   }
 }
+
+export function addEmotionCount() {
+  return {
+    type: 'COUNTER_EMOTION'
+  }
+}
+
+export function addSmile(value) {
+  return {
+    type: 'COUNT_SMILE',
+    value
+  }
+}

@@ -3,9 +3,22 @@ import { connect } from 'react-redux';
 
 class Feedback extends React.Component {
   render() {
+    if (this.props.emotion)
     return (
-      <p>{this.props.emotion}</p>
+      // <p>{JSON.stringify(this.props.emotion)}</p>
+      <div>
+      {
+        Object.entries(this.props.emotion).map(([k, v]) => (
+          <p key={k}>{k + v}</p>
+        ))
+      }
+      </div>
     )
+    else {
+      return(
+        <div></div>
+      )
+    }
   }
 
 }

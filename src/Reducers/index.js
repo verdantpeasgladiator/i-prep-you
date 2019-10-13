@@ -100,9 +100,9 @@ const initialState = {
     }
   ],
   selected: null,
-  webcam: {
-    emotion: ''
-  }
+  emotion: '',
+  emotionCounter: 0,
+  smile: 0
 }
 
 function questionsReducer(state = initialState, action) {
@@ -123,6 +123,16 @@ function webcamReducer(state = initialState, action) {
       return {
         ...state,
         emotion: action.emotion
+      }
+    case "COUNTER_EMOTION":
+      return {
+        ...state,
+        emotionCounter: state.emotionCounter + 1
+      }
+    case "COUNT_SMILE":
+      return {
+        ...state,
+        smile: state.smile + action.value
       }
     default:
       return state;
