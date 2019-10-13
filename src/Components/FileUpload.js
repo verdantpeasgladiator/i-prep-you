@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { setPage, setJobDesc } from "../Actions/index";
+import "./FileUpload.css";
 
 class FileUpload extends React.Component {
 
