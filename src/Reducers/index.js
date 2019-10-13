@@ -99,7 +99,10 @@ const initialState = {
       ]
     }
   ],
-  selected: null
+  selected: null,
+  webcam: {
+    emotion: ''
+  }
 }
 
 function questionsReducer(state = initialState, action) {
@@ -114,6 +117,19 @@ function questionsReducer(state = initialState, action) {
   }
 }
 
+function webcamReducer(state = initialState, action) {
+  switch (action.type) {
+    case "SET_EMOTION":
+      return {
+        ...state,
+        emotion: action.emotion
+      }
+    default:
+      return state;
+  }
+}
+
 export default combineReducers({
   questionsState: questionsReducer,
+  webcamReducer: webcamReducer
 });
