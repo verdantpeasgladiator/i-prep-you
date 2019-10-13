@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import ScoreCard from './Components/ScoreCard.js';
 import MyWebcam from './Components/webcam';
 import BasicApiCall from "./Component/BasicApiCall";
 
@@ -20,6 +21,7 @@ function App() {
         >
           Learn React
         </a>
+        <ScoreCard/>
         <BasicApiCall />
         <MyWebcam />
       </header>
