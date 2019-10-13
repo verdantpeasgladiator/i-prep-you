@@ -106,7 +106,6 @@ class MyWebcam extends React.Component {
           screenshotFormat="image/png"
           videoConstraints={videoConstraints}
         />
-        <button onClick={ this.capture.bind(this) }> hi </button>
       </div>
     );
   }
