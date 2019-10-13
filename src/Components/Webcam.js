@@ -14,9 +14,7 @@ class MyWebcam extends React.Component {
       url: "",
       imageData: ""
     };
-  }
 
-  componentDidMount() {
     const config = {
       apiKey: "AIzaSyAkU9yo0vquPx7mCkQgh4QQ-gRMPq9r_vE",
       authDomain: "hallowed-span-255722.firebaseapp.com",
@@ -25,7 +23,9 @@ class MyWebcam extends React.Component {
 
     firebase.initializeApp(config);
     storageRef = firebase.storage();
+  }
 
+  componentDidMount() {
     // 5 second loop to call azure face
     this.interval = setInterval(() => this.capture(), 5000);
   }
@@ -38,8 +38,7 @@ class MyWebcam extends React.Component {
     console.log("SUBMITTING");
     // Replace <Subscription Key> with your valid subscription key.
     const subscriptionKey = "38c1d41199794d2baf65b58e453b762e";
-    const uriBase =
-      "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect";
+    const uriBase = "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect";
 
     // Request parameters.
     const params = {
@@ -66,15 +65,12 @@ class MyWebcam extends React.Component {
       .then(data => {
         console.log(data[0].faceAttributes);
         let emotion = data[0].faceAttributes.emotion;
-        this.setState({ imageData: data });
-        // let topEmotion = Object.keys(emotion).reduce((a, b) =>
-        //   emotion[a] > emotion[b] ? a : b
-        // );
-        // this.props.setEmotion(topEmotion);
+
         this.props.addEmotionCount()
+        
         let oldEmotion = this.props.emotion;
         this.props.addSmile(data[0].faceAttributes.smile)
-        console.log('smile: ', this.props.smile)
+
         if (oldEmotion) {
           let newEmotion = {};
           Object.keys(emotion).map( a => {

@@ -12,11 +12,12 @@ class Feedback extends React.Component {
           <p key={k}>{k + v}</p>
         ))
       }
+        <p>{ this.props.jobDesc }</p>
       </div>
     )
     else {
       return(
-        <div></div>
+        <p>{ this.props.jobDesc }</p>
       )
     }
   }
@@ -24,9 +25,9 @@ class Feedback extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log("webcam reducer emotion is:", state.webcamReducer);
   return {
-    emotion: state.webcamReducer.emotion
+    emotion: state.webcamReducer.emotion,
+    jobDesc: state.pageState.jobDesc
   };
 };
 
