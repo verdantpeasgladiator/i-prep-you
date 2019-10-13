@@ -2,6 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import MyWebcam from './Components/webcam';
+import Interview from './Components/Interview';
 import BasicApiCall from "./Component/BasicApiCall";
 
 function App() {
@@ -21,7 +22,9 @@ function App() {
           Learn React
         </a>
         <BasicApiCall />
-        <MyWebcam />
+        <Interview>
+          <MyWebcam />
+        </Interview>
       </header>
     </div>
   );
