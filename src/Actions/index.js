@@ -5,6 +5,12 @@ export function getSelected(questionNo) {
   };
 }
 
+export function getNextQuestion() {
+  return {
+    type: "GET_NEXT_Q",
+  }
+}
+
 export function setEmotion(emotion) {
   return {
     type: 'SET_EMOTION',

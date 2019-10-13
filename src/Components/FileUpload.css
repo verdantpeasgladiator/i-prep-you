@@ -1,0 +1,28 @@
+form.p {
+  font-family: 'Roboto', sans-serif;
+}
+
+form {
+  margin: 20px 40px;
+}
+
+textarea {
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 5px;
+  max-width: 600px;
+}
+
+input[type="submit" i] {
+  background-color: #6E58C5; /* Green */
+  border-radius: 10px;
+  border: none;
+  color: white;
+  font-weight: 600;
+  margin-top: 10px;
+  padding: 10px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}

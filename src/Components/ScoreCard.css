@@ -22,6 +22,10 @@ p {
   grid-template-columns: 70% 30%;
 }
 
+.criterion p {
+  color: black;
+}
+
 p.score, h1.totalScore {
   text-align: right;
   font-weight: 600;
