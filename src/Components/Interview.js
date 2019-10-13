@@ -71,7 +71,7 @@ class Interview extends React.Component {
 
         let scoreObj = {}
         var numerator = Math.abs(WPM-115)
-        var denominator = (WPM + 115)/2
+        var denominator = (WPM + 108)/2
         console.log("WPM BEFORE CALC: " + WPM)
         console.log("NUM: " + numerator)
         console.log("DENOM: " + denominator)
