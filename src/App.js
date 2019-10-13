@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import ScoreCard from './Components/ScoreCard.js';
 import MyWebcam from './Components/webcam';
+import Feedback from './Components/Feedback';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         </p>
         <ScoreCard/>
         <MyWebcam />
+        <Feedback />
       </header>
     </div>
   );
