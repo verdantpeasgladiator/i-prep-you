@@ -9,11 +9,17 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+<<<<<<< HEAD
         <ScoreCard />
         <Feedback />
         <Interview>
           <MyWebcam />
         </Interview>
+=======
+        <ScoreCard/>
+        <BasicApiCall />
+        <MyWebcam />
+>>>>>>> hacky ol score card with scores ex deeee
       </header>
     </div>
   );

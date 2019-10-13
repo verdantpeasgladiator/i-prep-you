@@ -9,28 +9,33 @@ const initialState = {
       criteria: [
         {
           id: 0,
-          text: "Some kind of criteria 0",
+          text: "TOPIC AND THESIS",
           score: 10
         },
         {
           id: 1,
-          text: "Some kind of criteria 1",
+          text: "ORGANIZATIONAL STRUCTURE",
           score: 9
         },
         {
           id: 2,
-          text: "Some kind of criteria 2",
+          text: "EFFECTIVE USE OF LANGUAGE AND SPEECH PATTERNS",
           score: 8
         },
         {
           id: 3,
-          text: "Some kind of criteria 3",
+          text: "CONVERSATIONAL TONE",
           score: 9
         },
         {
           id: 4,
-          text: "Some kind of criteria 4",
+          text: "BODY LANGUAGE, POSTURE, AND GESTURES",
           score: 7
+        },
+        {
+          id: 5,
+          text: "IMPACT ON AUDIENCE",
+          score: 10
         }
       ]
     },
