@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import ScoreCard from './Components/ScoreCard.js';
+import ScoreCard from './Components/scoreCard.js';
 import MyWebcam from './Components/webcam';
 import Interview from './Components/Interview';
 import BasicApiCall from "./Component/BasicApiCall";
