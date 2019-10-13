@@ -39,7 +39,8 @@ function questionsReducer(state = initialState, action) {
     case "CALCULATE":
       return {
         ...state,
-        questions: [ {
+        questions: [ ...state.questions, 
+        {
           questionNo: 1,
           selected: true,
           messageText: "What is your greatest weakness?",

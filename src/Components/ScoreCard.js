@@ -33,14 +33,14 @@ class ScoreCard extends React.Component {
             return (
               <div className="criterion">
                 <p key={criterion.id}> {criterion.text}: </p>
-                <p className="score">{criterion.score}/10</p>
+                <p className="score">{(criterion.score).toFixed(2)}/10</p>
               </div>
             )
           }
         )}
         </div>
-        <h1 className="totalScore"> Total: {totalScore}/{10*criteria.length} </h1>
-        <button onClick={this.onclick.bind(this, this.props.questions.length)}>{this.state.questionNo < this.props.questions.length ? (<div>Next Question</div>) : (<div>Finish</div>) }</button>
+        <h1 className="totalScore"> Total: {totalScore.toFixed(2)}/{10*criteria.length} </h1>
+        <button onClick={this.onclick.bind(this, this.props.questions.length)}>{this.state.questionNo <= this.props.questions.length ? (<div>Continue</div>) : (<div>Finish</div>) }</button>
       </div>
     );  
   }
