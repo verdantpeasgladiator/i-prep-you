@@ -12,18 +12,22 @@ class ScoreCard extends React.Component {
 
   render() {
     let selectedQ = this.props.getSelected(this.state.questionNo);
-    console.log("selected Q is ", selectedQ);
+    let criteria = this.props.questions[selectedQ.questionNo - 1].criteria
+    let totalScore = 0;
     return (
       <div className="scoreCard">
         <h1>Question {selectedQ.questionNo}</h1>
-        {this.props.questions[selectedQ.questionNo - 1].criteria.map(
-          criterion => (
-            <div>
-              <p key={criterion.id}> {criterion.text}</p>
-              <p>/ {criterion.score}</p>
-            </div>
-          )
+        {criteria.map(
+          criterion => {
+            totalScore += criterion.score;
+            return (
+              <div>
+                <p key={criterion.id}> {criterion.text}: {criterion.score}/10</p>
+              </div>
+            )
+          }
         )}
+        <p> Total: {totalScore}/{10*criteria.length} </p>
       </div>
     );
   }
