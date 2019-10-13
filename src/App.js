@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 import ScoreCard from './Components/ScoreCard.js';
 import MyWebcam from './Components/webcam';
-import BasicApiCall from "./Components/BasicApiCall";
 
 function App() {
   return (

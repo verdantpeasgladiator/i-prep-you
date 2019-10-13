@@ -1,10 +1,12 @@
 import React from "react";
 import Webcam from "react-webcam";
 import firebase from 'firebase';
+import { connect } from 'react-redux';
+import { setEmotion } from '../Actions/index.js';
 
 let storageRef;
 
-export default class MyWebcam extends React.Component {
+class MyWebcam extends React.Component {
 
   constructor(props) {
     super(props);
@@ -53,11 +55,13 @@ export default class MyWebcam extends React.Component {
     })
     .then(res => res.json())
     .then((data) => {
-      console.log(data)
+      console.log(data[0].faceAttributes.emotion)
+      let emotion = data[0].faceAttributes.emotion;
       this.setState({ imageData: data })
+      console.log(Object.keys(emotion).reduce((a, b) => emotion[a] > emotion[b] ? a : b))
+      this.props.setEmotion(data[0].faceAttributes.age)
     })
     .catch(console.log)
-    // console.log(this.state)
   }
 
   async uploadFirebase(file) {
@@ -82,7 +86,6 @@ export default class MyWebcam extends React.Component {
     fetch(imageSrcURL)
     .then(res => res.blob())
     .then(blob => {
-      console.log(blob)
       this.uploadFirebase(blob)
     })
   };
@@ -108,3 +111,11 @@ export default class MyWebcam extends React.Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    emotion: state.webcamReducer.emotion
+  };
+};
+
+export default connect(mapStateToProps, { setEmotion })(MyWebcam);

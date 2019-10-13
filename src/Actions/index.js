@@ -4,3 +4,10 @@ export function getSelected(questionNo) {
     questionNo
   };
 }
+
+export function setEmotion(emotion) {
+  return {
+    type: 'SET_EMOTION',
+    emotion
+  }
+}
