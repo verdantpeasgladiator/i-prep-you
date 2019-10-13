@@ -13,9 +13,7 @@ class App extends React.Component {
     return this.props.isHome ? (
       <div className="App">
         <Feedback />
-        <Interview>
-          <MyWebcam />
-        </Interview>
+        <Interview />
         TODO: split in to pages
       </div>
     ) : (
