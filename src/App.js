@@ -1,21 +1,16 @@
 import React from 'react';
 import './App.css';
 import ScoreCard from './Components/ScoreCard.js';
-import MyWebcam from './Components/webcam';
+import MyWebcam from './Components/Webcam';
 import Feedback from './Components/Feedback';
 import Interview from './Components/Interview';
-import BasicApiCall from "./Component/BasicApiCall";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <p>
-          Yeet
-        </p>
-        <ScoreCard/>
+        <ScoreCard />
         <Feedback />
-        <BasicApiCall />
         <Interview>
           <MyWebcam />
         </Interview>

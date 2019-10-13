@@ -20,7 +20,6 @@ class MyWebcam extends React.Component {
     const config = {
       apiKey: "AIzaSyAkU9yo0vquPx7mCkQgh4QQ-gRMPq9r_vE",
       authDomain: "hallowed-span-255722.firebaseapp.com",
-      // databaseURL: "https://<DATABASE_NAME>.firebaseio.com",
       storageBucket: "hallowed-span-255722.appspot.com"
     };
 
@@ -40,7 +39,6 @@ class MyWebcam extends React.Component {
       returnFaceAttributes: "age,gender,headPose,smile,glasses,emotion"
     };
 
-    // const imageUrl =  'https://upload.wikimedia.org/wikipedia/commons/3/37/Dagestani_man_and_woman.jpg';
     const imageUrl = this.state.url
 
     // Perform the REST API call.
@@ -66,8 +64,7 @@ class MyWebcam extends React.Component {
 
   async uploadFirebase(file) {
     console.log(file)
-    // Upload file and metadata to the object 'images/mountains.jpg'
-    var ref = storageRef.ref(Math.floor((Math.random() * 100) + 1) + '.png');
+    var ref = storageRef.ref(Math.floor((Math.random() * 1000) + 1) + '.png');
     await ref.put(file, {'content-type': 'image/png'});
     const uri = await ref.getDownloadURL();
     console.log(uri)
