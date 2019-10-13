@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import ScoreCard from './Components/ScoreCard.js';
 import MyWebcam from './Components/webcam';
-import BasicApiCall from "./Component/BasicApiCall";
+import BasicApiCall from "./Components/BasicApiCall";
 
 function App() {
   return (
