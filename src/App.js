@@ -2,6 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import MyWebcam from './Components/webcam';
+import BasicApiCall from "./Component/BasicApiCall";
 
 function App() {
   return (
@@ -10,7 +11,6 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
-          
         </p>
         <a
           className="App-link"
@@ -20,6 +20,7 @@ function App() {
         >
           Learn React
         </a>
+        <BasicApiCall />
         <MyWebcam />
       </header>
     </div>
