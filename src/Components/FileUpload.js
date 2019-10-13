@@ -22,7 +22,7 @@ class FileUpload extends React.Component {
         <textarea
           cols="120"
           rows="5"
-          placeholder={"Paste your resume"}
+          placeholder={"Paste your job description"}
           onChange={this.handleChange}
         /> <br/>
         <input type="submit" value="Submit" />

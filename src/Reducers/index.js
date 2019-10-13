@@ -9,17 +9,17 @@ const initialState = {
       criteria: [
         {
           id: 0,
-          text: "Effective Use of Language and Speech Patterns",
+          text: "Use of filler words",
           score: 10
         },
         {
           id: 1,
-          text: "Conversational Tone",
+          text: "Facial/Body Language",
           score: 9
         },
         {
           id: 2,
-          text: "Body Language, Posture, and Gestures",
+          text: "Speaking Pace",
           score: 8
         },
         {
@@ -36,7 +36,7 @@ const initialState = {
       criteria: [
         {
           id: 0,
-          text: "Effective Use of Language and Speech Patterns",
+          text: "Use of filler words",
           score: 10
         },
         {
@@ -63,7 +63,7 @@ const initialState = {
       criteria: [
         {
           id: 0,
-          text: "Effective Use of Language and Speech Patterns",
+          text: "Use of filler words",
           score: 5
         },
         {
@@ -93,6 +93,11 @@ const initialState = {
 function questionsReducer(state = initialState, action) {
   switch (action.type) {
     case "GET_SELECTED":
+      return {
+        ...state,
+        selected: state.questions[action.questionNo]
+      }
+    case "CALCULATE":
       return {
         ...state,
         selected: state.questions[action.questionNo]

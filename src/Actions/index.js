@@ -38,3 +38,10 @@ export function setJobDesc(string) {
     string
   }
 }
+
+export function calculateScore(string) {
+  return {
+    type: 'CALCULATE',
+    string
+  }
+}
