@@ -39,9 +39,9 @@ export function setJobDesc(string) {
   }
 }
 
-export function calculateScore(string) {
+export function calculateScore(scoreObj) {
   return {
     type: 'CALCULATE',
-    string
+    scoreObj
   }
 }

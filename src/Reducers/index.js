@@ -1,89 +1,28 @@
 import { combineReducers } from "redux";
 
 const initialState = {
-  questions: [
-    {
-      questionNo: 1,
-      selected: true,
-      messageText: "Tell me about yourself",
-      criteria: [
-        {
-          id: 0,
-          text: "Use of filler words",
-          score: 10
-        },
-        {
-          id: 1,
-          text: "Facial/Body Language",
-          score: 9
-        },
-        {
-          id: 2,
-          text: "Speaking Pace",
-          score: 8
-        },
-        {
-          id: 3,
-          text: "Agreeableness",
-          score: 9
-        },
-      ]
-    },
-    {
-      questionNo: 2,
-      selected: false,
-      messageText: "What is your greatest strength?",
-      criteria: [
-        {
-          id: 0,
-          text: "Use of filler words",
-          score: 10
-        },
-        {
-          id: 1,
-          text: "Conversational Tone",
-          score: 10
-        },
-        {
-          id: 2,
-          text: "Body Language, Posture, and Gestures",
-          score: 10
-        },
-        {
-          id: 3,
-          text: "Agreeableness",
-          score: 10
-        },
-      ]
-    },
-    {
-      questionNo: 3,
-      selected: false,
-      messageText: "What is your greatest weakness?",
-      criteria: [
-        {
-          id: 0,
-          text: "Use of filler words",
-          score: 5
-        },
-        {
-          id: 1,
-          text: "Conversational Tone",
-          score: 5
-        },
-        {
-          id: 2,
-          text: "Body Language, Posture, and Gestures",
-          score: 5
-        },
-        {
-          id: 3,
-          text: "Agreeableness",
-          score: 9
-        },
-      ]
-    }
-  ],
+  questions: [ {
+    questionNo: 1,
+    selected: true,
+    messageText: "What is your greatest weakness?",
+    criteria: [
+      {
+        id: 0,
+        text: "Use of filler words",
+        score: 0
+      },
+      {
+        id: 1,
+        text: "Speaking Pace",
+        score: 0
+      },
+      {
+        id: 2,
+        text: "Body Language/Facial Expression",
+        score: 0
+      }
+    ]
+  }],
   selected: null,
   emotion: '',
   emotionCounter: 0,
@@ -100,7 +39,28 @@ function questionsReducer(state = initialState, action) {
     case "CALCULATE":
       return {
         ...state,
-        selected: state.questions[action.questionNo]
+        questions: [ {
+          questionNo: 1,
+          selected: true,
+          messageText: "What is your greatest weakness?",
+          criteria: [
+            {
+              id: 0,
+              text: "Use of filler words",
+              score: action.scoreObj.fillerWords
+            },
+            {
+              id: 1,
+              text: "Speaking Pace",
+              score: action.scoreObj.speakingRate
+            },
+            {
+              id: 2,
+              text: "Body Language/Facial Expression",
+              score: action.scoreObj.facial
+            }
+          ]
+        }]
       }
     default:
       return state;

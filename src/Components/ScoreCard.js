@@ -39,8 +39,8 @@ class ScoreCard extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    questions: state.questionsState.questions
-  };
+    questions: state.questionsState.questions,
+   };
 };
 
 export default connect(

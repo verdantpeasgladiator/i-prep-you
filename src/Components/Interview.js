@@ -1,5 +1,8 @@
 import React from "react";
 import MyWebcam from './Webcam';
+import { connect } from "react-redux";
+import { calculateScore } from "../Actions/index";
+
 const SpeechSDK = require("microsoft-cognitiveservices-speech-sdk");
 const subscriptionKey = "cfd23720fb3c4a5d9c28649d946259a1";
 const serviceRegion = "westus"; // e.g., "westus"
@@ -10,7 +13,7 @@ let wordCount = []
 let startTime;
 let fillerWords = 0;
 
-export default class Interview extends React.Component {
+class Interview extends React.Component {
     constructor() {
       super()
       this.state = {
@@ -47,7 +50,8 @@ export default class Interview extends React.Component {
         var currTime = new Date()
         var timeSpan = Math.abs(currTime - startTime) / 1000
         console.log("Word Count: " + wordCount.length)
-        console.log("WPM: " + ((wordCount.length/ timeSpan) * 60 ))
+        var WPM = (wordCount.length/ timeSpan) * 60
+        console.log("WPM: " + WPM)
 
 
         //total tracker for filler words
@@ -64,6 +68,26 @@ export default class Interview extends React.Component {
         }
 
         wordCount = []
+
+        let scoreObj = {}
+        var numerator = Math.abs(WPM-115)
+        var denominator = (WPM + 115)/2
+        console.log("WPM BEFORE CALC: " + WPM)
+        console.log("NUM: " + numerator)
+        console.log("DENOM: " + denominator)
+        scoreObj.speakingRate = 10 - (numerator/denominator) * 10
+        scoreObj.fillerWords = Math.abs(8-fillerWords)+2
+        let emotion = this.props.emotion
+        console.log('emotion counter: ', this.props.emotionCounter)
+        console.log('emotion happiness: ', emotion.happiness)
+        console.log('emotion neutral: ', emotion.neutral)
+        let faceScore = (emotion.happiness*2 + emotion.neutral - emotion.anger)/this.props.emotionCounter*3
+
+        scoreObj.facial = faceScore
+
+        this.props.calculateScore(scoreObj)
+
+
     }
 
     speechSDK () {
@@ -111,3 +135,15 @@ export default class Interview extends React.Component {
       }
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    emotion: state.webcamReducer.emotion,
+    emotionCounter: state.webcamReducer.emotionCounter
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { calculateScore }
+)(Interview);
