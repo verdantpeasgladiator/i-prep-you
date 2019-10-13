@@ -58,8 +58,8 @@ class MyWebcam extends React.Component {
       console.log(data[0].faceAttributes.emotion)
       let emotion = data[0].faceAttributes.emotion;
       this.setState({ imageData: data })
-      console.log(Object.keys(emotion).reduce((a, b) => emotion[a] > emotion[b] ? a : b))
-      this.props.setEmotion(data[0].faceAttributes.age)
+      let topEmotion = Object.keys(emotion).reduce((a, b) => emotion[a] > emotion[b] ? a : b)
+      this.props.setEmotion(topEmotion)
     })
     .catch(console.log)
   }

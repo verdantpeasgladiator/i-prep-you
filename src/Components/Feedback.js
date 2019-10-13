@@ -2,10 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 class Feedback extends React.Component {
-  constructor(){
-    super()
-  }
-
   render() {
     return (
       <p>{this.props.emotion}</p>
