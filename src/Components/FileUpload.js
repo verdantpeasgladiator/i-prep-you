@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { setPage, setJobDesc } from "../Actions/index";
+import { setPage, setJobDesc, pickQuestion } from "../Actions/index";
 import "./FileUpload.css";
 
 class FileUpload extends React.Component {
@@ -59,18 +59,19 @@ class FileUpload extends React.Component {
     //     tracker--;
     //   }
     // }
-    let question = "";
+    let question = [];
     e.preventDefault();
     Object.entries(questions).forEach(([key, value]) => {
       if (this.state.textInput.includes(key)) {
         let index = Math.random() > 0.5 ? 0 : 1;
-        question = questions[key][index];
+        question.push(questions[key][index]);
       }
       console.log(question);
     });
 
     // let question = parse(this.state.textInput);
     this.props.setJobDesc(question);
+    this.props.pickQuestion(0);
     this.props.setPage(true);
   };
 
@@ -99,5 +100,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { setPage, setJobDesc }
+  { setPage, setJobDesc, pickQuestion }
 )(FileUpload);

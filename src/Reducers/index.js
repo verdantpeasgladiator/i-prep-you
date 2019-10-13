@@ -36,6 +36,11 @@ function questionsReducer(state = initialState, action) {
         ...state,
         selected: state.questions[action.questionNo]
       }
+    case "PICK_Q":
+      return {
+        ...state,
+        question: action.string
+      }
     case "CALCULATE":
       return {
         ...state,

@@ -51,3 +51,10 @@ export function calculateScore(scoreObj) {
     scoreObj
   }
 }
+
+export function pickQuestion(string) {
+  return {
+    type: 'PICK_Q',
+    string
+  }
+}

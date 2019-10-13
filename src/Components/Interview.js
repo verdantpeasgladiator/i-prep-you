@@ -1,7 +1,7 @@
 import React from "react";
 import MyWebcam from './Webcam';
 import { connect } from "react-redux";
-import { calculateScore } from "../Actions/index";
+import { calculateScore, pickQuestion } from "../Actions/index";
 import "./Interview.css";
 const SpeechSDK = require("microsoft-cognitiveservices-speech-sdk");
 const subscriptionKey = "cfd23720fb3c4a5d9c28649d946259a1";
@@ -39,6 +39,7 @@ class Interview extends React.Component {
     }
 
     nextQuestion(){
+
         answers.push(answerPerQuestion)
         console.log(answers)
         answerPerQuestion = ''
@@ -87,6 +88,7 @@ class Interview extends React.Component {
 
         this.props.calculateScore(scoreObj)
 
+        this.props.pickQuestion(this.props.question + 1)
 
     }
 
@@ -139,11 +141,12 @@ class Interview extends React.Component {
 const mapStateToProps = state => {
   return {
     emotion: state.webcamReducer.emotion,
-    emotionCounter: state.webcamReducer.emotionCounter
+    emotionCounter: state.webcamReducer.emotionCounter,
+    question: state.questionsState.question
   };
 };
 
 export default connect(
   mapStateToProps,
-  { calculateScore }
+{ calculateScore, pickQuestion }
 )(Interview);
