@@ -24,3 +24,10 @@ export function addSmile(value) {
     value
   }
 }
+
+export function setPage(isHome) {
+  return {
+    type: 'SET_PAGE',
+    isHome
+  }
+}

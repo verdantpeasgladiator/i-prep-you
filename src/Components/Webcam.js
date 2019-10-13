@@ -1,7 +1,8 @@
 import React from "react";
 import Webcam from "react-webcam";
-import firebase from "firebase";
-import { connect } from "react-redux";
+import './Webcam.css';
+import firebase from 'firebase';
+import { connect } from 'react-redux';
 import { setEmotion, addEmotionCount, addSmile } from "../Actions/index.js";
 
 let storageRef;
@@ -124,7 +125,7 @@ class MyWebcam extends React.Component {
       <div>
         <Webcam
           audio={false}
-          height={500}
+          height={400}
           ref={this.setRef}
           screenshotFormat="image/png"
           videoConstraints={videoConstraints}

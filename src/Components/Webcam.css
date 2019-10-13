@@ -1,0 +1,5 @@
+.VideoContent {
+  display: grid;
+  grid-template-rows: 80% 5% 15%;
+  position:absolute;
+}
