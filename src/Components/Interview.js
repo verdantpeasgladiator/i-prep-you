@@ -29,24 +29,6 @@ class Interview extends React.Component {
     speechSDK () {
       // if we got an authorization token, use the token. Otherwise use the provided subscription key
        var speechConfig = SpeechSDK.SpeechConfig.fromSubscription(subscriptionKey, serviceRegion);
-
-       speechConfig.speechRecognitionLanguage = "en-US";
-       var audioConfig  = SpeechSDK.AudioConfig.fromDefaultMicrophoneInput();
-       var recognizer = new SpeechSDK.SpeechRecognizer(speechConfig, audioConfig);
-       recognizer.recognizeOnceAsync(
-         (result) => {
-           console.log(result);
-           this.setState({
-             textOutput: result.text
-           })
-           recognizer.close();
-           recognizer = undefined;
-         },
-         (err) => {
-           console.log(err);
-           recognizer.close();
-           recognizer = undefined;
-         });
     }
 
     render() {
@@ -68,7 +50,7 @@ class Interview extends React.Component {
         );
       }
     }
-  }
+}
 
 const mapStateToProps = state => {
   return {
