@@ -4,7 +4,6 @@ import ScoreCard from './Components/ScoreCard.js';
 import MyWebcam from './Components/webcam';
 import Feedback from './Components/Feedback';
 import Interview from './Components/Interview';
-import BasicApiCall from "./Component/BasicApiCall";
 
 function App() {
   return (
@@ -15,7 +14,6 @@ function App() {
         </p>
         <ScoreCard/>
         <Feedback />
-        <BasicApiCall />
         <Interview>
           <MyWebcam />
         </Interview>

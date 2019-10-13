@@ -4,6 +4,8 @@ const SpeechSDK = require("microsoft-cognitiveservices-speech-sdk");
 const subscriptionKey = "cfd23720fb3c4a5d9c28649d946259a1";
 const serviceRegion = "westus"; // e.g., "westus"
 
+let recognizer;
+
 export default class Interview extends React.Component {
     constructor() {
       super()
@@ -11,6 +13,20 @@ export default class Interview extends React.Component {
         isRecording: false,
         textOutput: ''
       }
+        var speechConfig = SpeechSDK.SpeechConfig.fromSubscription(subscriptionKey, serviceRegion);
+        speechConfig.speechRecognitionLanguage = "en-US";
+        var audioConfig  = SpeechSDK.AudioConfig.fromDefaultMicrophoneInput();
+        recognizer = new SpeechSDK.SpeechRecognizer(speechConfig, audioConfig);
+    }
+
+    startInterview () {
+        this.switchRecording()
+        this.speechSDK.bind(this)
+    }
+
+    stopInterview () {
+        // this.switchRecording()
+        this.stopSpeechSDK.bind(this)
     }
 
     switchRecording () {
@@ -19,19 +35,32 @@ export default class Interview extends React.Component {
       })
     }
 
+    stopSpeechSDK (){
+        recognizer.stopContinuousRecognitionAsync(
+            () => {
+                // console.log(result);
+                this.speechSDK()
+                // this.setState({
+                //   textOutput: result.text
+                // })
+                recognizer.close();
+                recognizer = undefined;
+              },
+              (err) => {
+                console.log(err);
+                recognizer.close();
+                recognizer = undefined;
+              });    
+    }
+
     speechSDK () {
       // if we got an authorization token, use the token. Otherwise use the provided subscription key
-       var speechConfig = SpeechSDK.SpeechConfig.fromSubscription(subscriptionKey, serviceRegion);
-
-       speechConfig.speechRecognitionLanguage = "en-US";
-       var audioConfig  = SpeechSDK.AudioConfig.fromDefaultMicrophoneInput();
-       var recognizer = new SpeechSDK.SpeechRecognizer(speechConfig, audioConfig);
-       recognizer.recognizeOnceAsync(
-         (result) => {
-           console.log(result);
-           this.setState({
-             textOutput: result.text
-           })
+       recognizer.startContinuousRecognitionAsync(
+         () => {
+        //    console.log(result);
+        //    this.setState({
+        //      textOutput: result.text
+        //    })
            recognizer.close();
            recognizer = undefined;
          },
@@ -46,16 +75,16 @@ export default class Interview extends React.Component {
       if (this.state.isRecording){
         return (
           <div>
-             <button onClick={this.switchRecording.bind(this)}>Stop Interview</button>
+             <button onClick={this.stopInterview.bind(this)}>Stop Interview</button>
              <MyWebcam />
-             <button onClick={this.speechSDK.bind(this)}>Start Speech</button>
+             <button onClick={this.stopSpeechSDK.bind(this)}>Next Question</button>
              <p>{ this.state.textOutput }</p>
           </div>
           );
       } else {
         return (
           <div>
-             <button onClick={this.switchRecording.bind(this)}>Start Interview</button>
+             <button onClick={this.startInterview.bind(this)}>Start Interview</button>
           </div>
         );
       }
