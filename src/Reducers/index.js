@@ -122,7 +122,7 @@ function webcamReducer(state = initialState, action) {
     case "SET_EMOTION":
       return {
         ...state,
-        emotion: state.webcam[action.emotion]
+        emotion: action.emotion
       }
     default:
       return state;

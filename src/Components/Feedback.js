@@ -4,21 +4,18 @@ import { connect } from 'react-redux';
 class Feedback extends React.Component {
   constructor(){
     super()
-    this.state = {
-      emotion: ''
-    }
   }
 
   render() {
-    console.log('EMOTION: ' + this.state.emotion)
     return (
-      <p>{this.state.emotion}</p>
+      <p>{this.props.emotion}</p>
     )
   }
 
 }
 
 const mapStateToProps = (state) => {
+  console.log("webcam reducer emotion is:", state.webcamReducer);
   return {
     emotion: state.webcamReducer.emotion
   };
