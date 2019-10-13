@@ -25,6 +25,7 @@ export default class Interview extends React.Component {
       this.setState({
         isRecording: true
       })
+      this.speechSDK()
     }
 
     stopRecording () {
@@ -33,7 +34,7 @@ export default class Interview extends React.Component {
       })
       console.log("# of Filler Words: " + fillerWords)
     }
-  
+
     nextQuestion(){
         answers.push(answerPerQuestion)
         console.log(answers)
@@ -49,7 +50,7 @@ export default class Interview extends React.Component {
         console.log("WPM: " + ((wordCount.length/ timeSpan) * 60 ))
 
 
-        //total tracker for filler words 
+        //total tracker for filler words
         for (var j = 0; j < wordCount.length - 1; j++){
           if (wordCount[j].includes("Uh.")){
             fillerWords++
@@ -64,7 +65,6 @@ export default class Interview extends React.Component {
 
         wordCount = []
     }
-    
 
     speechSDK () {
       // if we got an authorization token, use the token. Otherwise use the provided subscription key
@@ -94,11 +94,10 @@ export default class Interview extends React.Component {
     }
 
     render() {
+      if (this.state.isRecording){
         return (
           <div>
-             <button onClick={this.stopRecording.bind(this)}>Stop Interview</button>
              <MyWebcam />
-             <button onClick={this.speechSDK.bind(this)}>Start Speech</button>
              <button onClick={this.nextQuestion.bind(this)}>Next Question</button>
              <p>{ this.state.textOutput }</p>
           </div>
@@ -111,3 +110,4 @@ export default class Interview extends React.Component {
         );
       }
   }
+}
