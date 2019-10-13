@@ -31,3 +31,10 @@ export function setPage(isHome) {
     isHome
   }
 }
+
+export function setJobDesc(string) {
+  return {
+    type: 'SET_JOB_DESC',
+    string
+  }
+}

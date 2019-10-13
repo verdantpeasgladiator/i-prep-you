@@ -1,5 +1,3 @@
-
-
 .App {
   text-align: left;
   background-color: #1E253E;
@@ -31,4 +29,8 @@
   display: grid;
   grid-template-columns: 50% 50%;
   padding: 10px;
+}
+
+p {
+  color: white;
 }

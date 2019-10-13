@@ -131,6 +131,11 @@ function pageReducer(state = initialState, action) {
         ...state,
         isHome: action.isHome
       }
+    case "SET_JOB_DESC":
+      return {
+        ...state,
+        jobDesc: action.string
+      }
     default:
       return state;
   }
