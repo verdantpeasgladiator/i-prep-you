@@ -31,7 +31,7 @@ export default class BasicApiCall extends React.Component {
     // Replace <Subscription Key> with your valid subscription key.
     const subscriptionKey = "38c1d41199794d2baf65b58e453b762e";
     const uriBase = "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect";
-    
+
     // Request parameters.
     const params = {
       returnFaceId: "true",
