@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import ScoreCard from './Components/ScoreCard.js';
 import MyWebcam from './Components/webcam';
 import BasicApiCall from "./Component/BasicApiCall";
 
@@ -9,6 +10,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+        <ScoreCard/>
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
