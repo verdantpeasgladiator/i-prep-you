@@ -4,11 +4,19 @@ import { getSelected } from "../Actions/index.js";
 import './ScoreCard.css'
 
 class ScoreCard extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       questionNo: 1
     };
+  }
+
+  onclick = (length) => {
+    if (length - this.state.questionNo > 0) {
+      this.setState({questionNo: this.state.questionNo + 1}, function () {
+        console.log(this.state.questionNo);
+      })
+    }
   }
 
   render() {
@@ -32,6 +40,7 @@ class ScoreCard extends React.Component {
         )}
         </div>
         <h1 className="totalScore"> Total: {totalScore}/{10*criteria.length} </h1>
+        <button onClick={this.onclick.bind(this, this.props.questions.length)}>{this.state.questionNo < this.props.questions.length ? (<div>Next Question</div>) : (<div>Finish</div>) }</button>
       </div>
     );
   }
