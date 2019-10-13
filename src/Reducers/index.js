@@ -87,7 +87,8 @@ const initialState = {
   selected: null,
   webcam: {
     emotion: ''
-  }
+  },
+  isHome: true
 }
 
 function questionsReducer(state = initialState, action) {
@@ -114,7 +115,20 @@ function webcamReducer(state = initialState, action) {
   }
 }
 
+function pageReducer(state = initialState, action) {
+  switch (action.type) {
+    case "SET_PAGE":
+      return {
+        ...state,
+        isHome: action.isHome
+      }
+    default:
+      return state;
+  }
+}
+
 export default combineReducers({
   questionsState: questionsReducer,
-  webcamReducer: webcamReducer
+  webcamReducer: webcamReducer,
+  pageState: pageReducer,
 });

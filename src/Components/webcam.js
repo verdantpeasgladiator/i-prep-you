@@ -99,7 +99,7 @@ class MyWebcam extends React.Component {
       <div>
         <Webcam
           audio={false}
-          height={500}
+          height={400}
           ref={this.setRef}
           screenshotFormat="image/png"
           videoConstraints={videoConstraints}

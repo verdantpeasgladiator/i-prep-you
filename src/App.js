@@ -1,52 +1,44 @@
-<<<<<<< HEAD
-import React from 'react';
-import './App.css';
-import ScoreCard from './Components/ScoreCard.js';
-import MyWebcam from './Components/Webcam';
-import Feedback from './Components/Feedback';
-import Interview from './Components/Interview';
-=======
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
-import ScoreCard from "./Components/ScoreCard";
-import MyWebcam from "./Components/webcam";
-import BasicApiCall from "./Component/BasicApiCall";
+import ScoreCard from "./Components/ScoreCard.js";
+import MyWebcam from "./Components/Webcam";
+import Feedback from "./Components/Feedback";
+import Interview from "./Components/Interview";
 import Navbar from "./Components/Navbar";
->>>>>>> basic page styling
+import { connect } from "react-redux";
+import { setPage } from "./Actions/index";
 
-function App() {
-  return (
-    <div className="App">
-<<<<<<< HEAD
-      <header className="App-header">
-<<<<<<< HEAD
-        <ScoreCard />
+class App extends React.Component {
+  render() {
+    return this.props.isHome ? (
+      <div className="App">
         <Feedback />
         <Interview>
           <MyWebcam />
         </Interview>
-=======
-        <ScoreCard/>
-        <BasicApiCall />
-        <MyWebcam />
->>>>>>> hacky ol score card with scores ex deeee
-      </header>
-=======
-      <Navbar />
-      <div className="Content">
-        <div className="Left">
-          <MyWebcam />
-          <BasicApiCall />
-        </div>
-        <div className="Right">
-          <ScoreCard />
+        TODO: split in to pages
+      </div>
+    ) : (
+      <div className="App">
+        <Navbar />
+        <div className="Content">
+          <div className="Left">
+            <MyWebcam />
+            <button onClick={()=>this.props.setPage(true)}>Back</button>
+          </div>
+          <div className="Right">
+            <ScoreCard />
+          </div>
         </div>
       </div>
->>>>>>> basic page styling
-    </div>
-  );
+    );
+  }
 }
 
+const mapStateToProps = state => {
+  return {
+    isHome: state.pageState.isHome
+  };
+};
 
-export default App;
+export default connect(mapStateToProps, { setPage })(App);

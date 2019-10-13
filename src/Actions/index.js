@@ -11,3 +11,10 @@ export function setEmotion(emotion) {
     emotion
   }
 }
+
+export function setPage(isHome) {
+  return {
+    type: 'SET_PAGE',
+    isHome
+  }
+}

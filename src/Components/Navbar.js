@@ -18,7 +18,7 @@ export default function Navbar() {
   return (
     <div className={classes.root}>
       <AppBar position="static" style={{backgroundColor: '#6E58C5', padding: 20}}>
-        <div className="logo"><img src={Logo} /></div>
+        <div className="logo"><img src={Logo} alt="Logo"/></div>
       </AppBar>
     </div>
   );

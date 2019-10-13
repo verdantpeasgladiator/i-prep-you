@@ -1,10 +1,13 @@
 import React from "react";
-import MyWebcam from './webcam';
+import MyWebcam from './Webcam';
+import { setPage } from '../Actions/index';
+import { connect } from 'react-redux';
+
 const SpeechSDK = require("microsoft-cognitiveservices-speech-sdk");
 const subscriptionKey = "cfd23720fb3c4a5d9c28649d946259a1";
 const serviceRegion = "westus"; // e.g., "westus"
 
-export default class Interview extends React.Component {
+class Interview extends React.Component {
     constructor() {
       super()
       this.state = {
@@ -17,6 +20,10 @@ export default class Interview extends React.Component {
       this.setState({
         isRecording: !this.state.isRecording
       })
+    }
+
+    fetchNextPage () {
+      this.props.setPage(!this.props.isHome);
     }
 
     speechSDK () {
@@ -56,8 +63,18 @@ export default class Interview extends React.Component {
         return (
           <div>
              <button onClick={this.switchRecording.bind(this)}>Start Interview</button>
+             <button onClick={this.fetchNextPage.bind(this)}>Finish</button>
           </div>
         );
       }
     }
   }
+
+const mapStateToProps = state => {
+  return {
+    isHome: state.pageState.isHome
+  }
+}
+
+
+export default connect(mapStateToProps, { setPage })(Interview)
