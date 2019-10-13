@@ -16,10 +16,10 @@ class ScoreCard extends React.Component {
       <div className="scoreCard">
         <h1>
           Question {selectedQ.questionNo}
-          {selectedQ.criteria.map(criterion => (
+        </h1>
+          {this.props.questions[selectedQ.questionNo].criteria.map(criterion => (
             <p key={criterion.id}> {criterion.text}</p>
           ))}
-        </h1>
       </div>
     );
   }
@@ -28,7 +28,7 @@ class ScoreCard extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    questions: state.questions
+    questions: state.questionsState.questions
   };
 };
 
